@@ -8,8 +8,6 @@
 
 <?php
 
-use JetBrains\PhpStorm\Language;
-
 class Movie {
     public $title;
     public $genre;
