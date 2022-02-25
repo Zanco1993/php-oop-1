@@ -13,11 +13,25 @@ class Movie {
     public $genre;
     public $language;
     public $yearProduction;
-}
 
-$harryPotter = new Movie() {
+    function __construct($_title, $_genre, $_language, $_yearProduction)
+    {
+     echo $this ->title = $_title . '<br>';  
+     echo $this -> genre = $_genre . '<br>';
+     echo $this -> language = $_language . '<br>';
+     echo $this -> yearProduction = $_yearProduction . '<br>'; 
+    }
+} 
 
-}
+
+$firstFilm = new Movie("Harry Potter", "Fantasy", "ita", "2001-01-01");
+    
+
+$secondFilm = new Movie("Io sono leggenda", "Azione", "ita", "2007-01-01");
+    
+        
+    
+    
 
 
 
