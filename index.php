@@ -8,33 +8,50 @@
 
 <?php
 
+use JetBrains\PhpStorm\Language;
+
 class Movie {
     public $title;
     public $genre;
     public $language;
     public $yearProduction;
 
-    function __construct($_title, $_genre, $_language, $_yearProduction)
+    function __construct($_dataMovies)
     {
-     echo $this ->title = $_title . '<br>';  
-     echo $this -> genre = $_genre . '<br>';
-     echo $this -> language = $_language . '<br>';
-     echo $this -> yearProduction = $_yearProduction . '<br>'; 
+        
+     echo $this ->title = $_dataMovies['title'] . '<br>';  
+     echo $this -> genre = $_dataMovies['genre'] . '<br>';
+     echo $this -> language = $_dataMovies['language'] . '<br>';
+     echo $this -> yearProduction = $_dataMovies['yearProduction'] . '<br>'; 
+     
+    }
+
+    // questa funzione permette di calcolare la differenza di anni tra la data produzione e la data odierna
+    public function getPublishMovie($yearPublish) {
+
+        $yearDifferent = date_diff(date_create($yearPublish), date_create());
+
+        return $yearDifferent -> y;
     }
 } 
 
+$firstFilm = new Movie([
+    "title" => "Harry Potter",
+    "genre" => "Fantasy",
+    "language" => "ita", 
+    "yearProduction" => "2001-01-01"
+]);
+    echo '<p>Il film è stato pubblicato' . ' ' . $firstFilm -> getPublishMovie("2001-01-01") . ' ' . 'anni fa' . '</p>' . '<br>';
 
-$firstFilm = new Movie("Harry Potter", "Fantasy", "ita", "2001-01-01");
+$secondFilm = new Movie([
+    "title" => "Io sono leggenda",
+    "genre" => "Azione",
+    "language" => "ita", 
+    "yearProduction" => "2007-01-01"
+]);
+    echo '<p>Il film è stato pubblicato' . ' ' . $secondFilm -> getPublishMovie("2007-01-01") . ' ' . 'anni fa' . '</p>' . '<br>';
+
     
-
-$secondFilm = new Movie("Io sono leggenda", "Azione", "ita", "2007-01-01");
-    
-        
-    
-    
-
-
-
 
 
 ?>
@@ -48,6 +65,11 @@ $secondFilm = new Movie("Io sono leggenda", "Azione", "ita", "2007-01-01");
     <title>php-oop-1</title>
 </head>
 <body>
+
+<?php
+
+
+?>
     
 </body>
 </html>
