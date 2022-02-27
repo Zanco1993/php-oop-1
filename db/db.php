@@ -10,8 +10,6 @@ $harryPotter_1 = new Movie(
         "valutazione" => 4
     ]
 );
-// '<p>Il film è stato pubblicato' . ' ' . $firstFilm->getPublishMovie("2001-01-01") . ' ' . 'anni fa' . '</p>' . '<br>';
-
 $harryPotter_2 = new Movie(
     [
         "image_album" => 'https://m.media-amazon.com/images/I/81sIPSTxj4L._SL1441_.jpg',
