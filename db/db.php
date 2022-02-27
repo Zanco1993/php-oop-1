@@ -29,7 +29,7 @@ $harryPotter_3 = new Movie(
         "genre" => "Fantasy",
         "language" => "ita",
         "yearProduction" => "2004-01-01",
-        "valutazione" => 5
+        "valutazione" => 3
     ]
 );
 $harryPotter_4 = new Movie(
@@ -49,7 +49,7 @@ $harryPotter_5 = new Movie(
         "genre" => "Fantasy",
         "language" => "ita",
         "yearProduction" => "2007-01-01",
-        "valutazione" => 5
+        "valutazione" => 3
     ]
 );
 $harryPotter_6 = new Movie(
@@ -69,7 +69,7 @@ $harryPotter_7 = new Movie(
         "genre" => "Fantasy",
         "language" => "ita",
         "yearProduction" => "2010-01-01",
-        "valutazione" => 5
+        "valutazione" => 4
     ]
 );
 $harryPotter_8 = new Movie(

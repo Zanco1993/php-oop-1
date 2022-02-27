@@ -26,22 +26,30 @@ class Movie
         $this->valutazione = $_dataMovies["valutazione"];
     }
 
-    // questa funzione permette di calcolare la differenza di anni tra la data produzione e la data odierna
-    public function getPublishMovie($yearPublish)
+    // questa funzione ci permette di andare a stampare nell'html le informazioni dei film
+    public function printMovie($value)
     {
-        $yearDifferent = date_diff(date_create($yearPublish), date_create());
-        return $yearDifferent->y;
+        echo '<div class="card">';
+        foreach ($value as $keyMovie => $valueMovie) {
+            if ($keyMovie === "image_album") {
+                echo '<img src="' . $valueMovie . '" alt="">';
+            } else if ($keyMovie === "valutazione") {
+                echo '<p><strong>' . ucfirst($keyMovie) . '</strong>' . ':';
+                // vado a ciclare tante volte quanto la valutazione del film (da 1 a 5)
+                // stampo inoltre delle stelle al posto della valutazione in numero
+                for ($i = 0; $i < $valueMovie; $i++) { ?>
+                    <i class="fas fa-star"></i>
+<?php }
+            } else {
+                echo '<p><strong>' . ucfirst($keyMovie) . '</strong>' . ':' . $valueMovie;
+            }
+        }
+        echo '</div>';
     }
-
-    // public function printMovie() {
-        
-    // }
 }
 
-// importo tutte le instanze 
+// importo tutte le istanze 
 include __DIR__ . '/db/db.php';
-
-// '<p>Il film è stato pubblicato' . ' ' . $secondFilm->getPublishMovie("2007-01-01") . ' ' . 'anni fa' . '</p>' . '<br>';
 
 // creo un array delle istanze dei film cosi da ciclarli nell'array
 
@@ -55,6 +63,8 @@ $HarryPotterMovies = [
     $harryPotter_7,
     $harryPotter_8
 ];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -65,25 +75,16 @@ $HarryPotterMovies = [
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>php-oop-1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <div class="container">
-        <h1 class="title">Lista film</h1>
+        <h1 class="title">Lista film Harry Potter</h1>
         <div class="content-card">
-
             <?php foreach ($HarryPotterMovies as $key => $value) {
-                // $value -> printMovie();
-                echo '<div class="card">';
-                foreach ($value as $keyMovie => $valueMovie) {
-                    if ($keyMovie === "image_album") {
-                        echo '<img src="' . $valueMovie . '" alt="">';
-                    } else {
-                        echo '<p><strong>' . ucfirst($keyMovie) . '</strong>' . ':' . $valueMovie;
-                    }
-                }
-                echo '</div>';
+                $value->printMovie($value);
             } ?>
         </div>
     </div>
